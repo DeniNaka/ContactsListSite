@@ -29,7 +29,7 @@ namespace ContactsListSite.Infrastructure.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("BirthDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("date");
 
                     b.Property<string>("FirstName")
                         .IsRequired()

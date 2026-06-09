@@ -30,14 +30,14 @@ namespace ContactsListSite.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateContactDto dto, CancellationToken ct)
+        public async Task<IActionResult> Create([FromBody] CreateContactDto dto, CancellationToken ct)
         {
             var contact = await _service.CreateContactAsync(dto, ct);
             return CreatedAtAction(nameof(GetById), new { id = contact.Id }, contact);
         } 
 
         [HttpPut("{id:guid}")]
-        public async Task<IActionResult> Update(Guid id, UpdateContactDto dto, CancellationToken ct)
+        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateContactDto dto, CancellationToken ct)
         {
             await _service.UpdateContactAsync(id, dto, ct);
             return NoContent();
