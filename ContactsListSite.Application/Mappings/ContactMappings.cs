@@ -15,7 +15,8 @@ namespace ContactsListSite.Application.Mappings
             return new ContactDto
             {
                 Id = contact.Id,
-                FullName = $"{contact.FirstName} {contact.LastName}",
+                FirstName = contact.FirstName,
+                LastName = contact.LastName,
                 MobilePhone = contact.MobilePhone,
                 JobTitle = contact.JobTitle,
                 BirthDate = contact.BirthDate

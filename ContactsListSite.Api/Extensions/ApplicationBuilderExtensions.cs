@@ -4,6 +4,7 @@
     {
         public static WebApplication ConfigureMiddleware(this WebApplication app)
         {
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             if (app.Environment.IsDevelopment())

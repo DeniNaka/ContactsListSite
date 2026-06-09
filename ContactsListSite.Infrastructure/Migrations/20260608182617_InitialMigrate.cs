@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ContactsListSite.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialMigrate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +20,7 @@ namespace ContactsListSite.Infrastructure.Migrations
                     LastName = table.Column<string>(type: "text", nullable: false),
                     MobilePhone = table.Column<string>(type: "text", nullable: false),
                     JobTitle = table.Column<string>(type: "text", nullable: false),
-                    BirthDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    BirthDate = table.Column<DateTime>(type: "date", nullable: false)
                 },
                 constraints: table =>
                 {

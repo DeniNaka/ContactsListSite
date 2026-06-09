@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="left-panel">
+            <div class="header">
+                <h2>Контакты</h2>
+                <button id="createBtn">Создать</button>
+            </div>
+
+            <ul id="contactList"></ul>
+        </div>
+
+        <div class="right-panel">
+
+            <h2>Информация</h2>
+
+            <div id="contactInfo">
+                Выберите контакт
+            </div>
+
+            <div class="actions">
+                <button id="editBtn" disabled>Редактировать</button>
+                <button id="deleteBtn" disabled>Удалить</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal hidden" id="contactModal">
+
+        <div class="modal-content">
+
+            <h2 id="modalTitle">Контакт</h2>
+
+            <form id="contactForm">
+
+                <input type="hidden" id="contactId">
+
+                <label>Имя</label>
+                <input type="text" id="firstName">
+                <span class="error" id="firstNameError"></span>
+
+                <label>Фамилия</label>
+                <input type="text" id="lastName">
+                <span class="error" id="lastNameError"></span>
+
+                <label>Телефон</label>
+                <input type="text" id="mobilePhone">
+                <span class="error" id="phoneError"></span>
+
+                <label>Должность</label>
+                <input type="text" id="jobTitle">
+                <span class="error" id="jobError"></span>
+
+                <label>Дата рождения</label>
+                <input type="date" id="birthDate">
+                <span class="error" id="birthError"></span>
+
+                <div class="modal-buttons">
+                    <button type="submit">Сохранить</button>
+                    <button type="button" id="cancelBtn">Отмена</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
