@@ -12,7 +12,8 @@ namespace ContactsListSite.Domain.RepInterfaces
         Task<List<Contact>> GetAllAsync(CancellationToken ct);
         Task<Contact?> GetByIdAsync(Guid id, CancellationToken ct);
         void Add(Contact contact);
-        void Delete(Contact contact);
+        Task<bool> Delete(Guid id, CancellationToken ct);
+        Task<bool> Update(Contact contact, CancellationToken ct);
         Task SaveChangesAsync(CancellationToken ct);
     }
 }
