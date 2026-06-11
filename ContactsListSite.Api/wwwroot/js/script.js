@@ -79,8 +79,7 @@ function openCreateModal() {
 
     contactIdInput.value = "";
 
-    document.getElementById("modalTitle").textContent =
-        "Создание контакта";
+    document.getElementById("modalTitle").textContent = "Создание контакта";
 
     clearErrors();
 
@@ -99,8 +98,7 @@ function openEditModal() {
     jobTitleInput.value = selectedContact.jobTitle;
     birthDateInput.value = selectedContact.birthDate.split("T")[0];
 
-    document.getElementById("modalTitle").textContent =
-        "Редактирование контакта";
+    document.getElementById("modalTitle").textContent = "Редактирование контакта";
 
     clearErrors();
 
@@ -186,36 +184,29 @@ function validateForm() {
     const dto = getFormData();
 
     if (dto.firstName.length < 2) {
-        document.getElementById("firstNameError").textContent =
-            "Минимум 2 символа";
+        document.getElementById("firstNameError").textContent = "Минимум 2 символа";
         valid = false;
     }
 
     if (dto.lastName.length < 2) {
-        document.getElementById("lastNameError").textContent =
-            "Минимум 2 символа";
+        document.getElementById("lastNameError").textContent = "Минимум 2 символа";
         valid = false;
     }
 
     if (!/^\+\d{11,15}$/.test(dto.mobilePhone)) {
-        document.getElementById("phoneError").textContent =
-            "Формат: +79991234567";
+        document.getElementById("phoneError").textContent = "Формат: +79991234567";
         valid = false;
     }
 
     if (dto.jobTitle.length < 2) {
-        document.getElementById("jobError").textContent =
-            "Минимум 2 символа";
+        document.getElementById("jobError").textContent = "Минимум 2 символа";
         valid = false;
     }
 
-    const age =
-        new Date().getFullYear() -
-        new Date(dto.birthDate).getFullYear();
+    const age = new Date().getFullYear() - new Date(dto.birthDate).getFullYear();
 
     if (age < 6 || age > 120) {
-        document.getElementById("birthError").textContent =
-            "Возраст должен быть от 6 до 120 лет";
+        document.getElementById("birthError").textContent = "Возраст должен быть от 6 до 120 лет";
         valid = false;
     }
 
@@ -224,8 +215,7 @@ function validateForm() {
 
 function clearErrors() {
 
-    document.querySelectorAll(".error")
-        .forEach(x => x.textContent = "");
+    document.querySelectorAll(".error").forEach(x => x.textContent = "");
 }
 
 function getFormData() {
