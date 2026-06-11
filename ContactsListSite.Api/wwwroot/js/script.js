@@ -146,9 +146,12 @@ form.addEventListener("submit", async e => {
     closeModal();
     await loadContacts();
 
-    if (selectedContact) {
+    if (id) {
         selectedContact = contacts.find(x => x.id === id);
-        selectContact(selectedContact);
+
+        if (selectedContact) {
+            selectContact(selectedContact);
+        }
     }
 });
 
