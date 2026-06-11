@@ -26,7 +26,7 @@ using System.Threading.Tasks;
 
             public async Task<Contact?> GetByIdAsync(Guid id, CancellationToken ct)
             {
-                return await _context.Contacts.FirstOrDefaultAsync(c => c.Id == id, ct);
+                return await _context.Contacts.FindAsync(id, ct);
             }
 
             public void Add(Contact contact)
