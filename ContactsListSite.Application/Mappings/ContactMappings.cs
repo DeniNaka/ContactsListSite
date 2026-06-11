@@ -35,5 +35,18 @@ namespace ContactsListSite.Application.Mappings
                 BirthDate = dto.BirthDate
             };
         }
+
+        public static Contact ToEntity(this UpdateContactDto dto, Guid id)
+        {
+            return new Contact
+            {
+                Id = id,
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
+                MobilePhone = dto.MobilePhone,
+                JobTitle = dto.JobTitle,
+                BirthDate = dto.BirthDate
+            };
+        }
     }
 }

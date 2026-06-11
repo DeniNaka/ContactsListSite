@@ -30,7 +30,12 @@ namespace ContactsListSite.Application.Services
 
         public async Task<ContactDto> GetContactByIdAsync(Guid id, CancellationToken ct)
         {
-            var contact = await GetContactOrThrowAsync(id, ct);
+            var contact = await _contactRepository.GetByIdAsync(id, ct);
+
+            if (contact == null)
+            {
+                throw new NotFoundException($"Contact with id '{id}' not found.");
+            }
 
             return contact.ToDto();
         }
@@ -47,29 +52,22 @@ namespace ContactsListSite.Application.Services
 
         public async Task UpdateContactAsync(Guid id, UpdateContactDto dto, CancellationToken ct)
         {
-            var contact = await GetContactOrThrowAsync(id, ct);
+            var updated = await _contactRepository.Update(dto.ToEntity(id), ct);
 
-            contact.FirstName = dto.FirstName;
-            contact.LastName = dto.LastName;
-            contact.MobilePhone = dto.MobilePhone;
-            contact.JobTitle = dto.JobTitle;
-            contact.BirthDate = dto.BirthDate;
-
-            await _contactRepository.SaveChangesAsync(ct);
+            if (!updated)
+            {
+                throw new NotFoundException($"Contact with id '{id}' not found.");
+            }
         }
 
         public async Task DeleteContactAsync(Guid id, CancellationToken ct)
         {
-            var contact = await GetContactOrThrowAsync(id, ct);
+            var deleted = await _contactRepository.Delete(id, ct);
 
-            _contactRepository.Delete(contact);
-            await _contactRepository.SaveChangesAsync(ct);
-        }
-
-        private async Task<Contact> GetContactOrThrowAsync(Guid id, CancellationToken ct)
-        {
-            return await _contactRepository.GetByIdAsync(id, ct)
-                ?? throw new NotFoundException($"Contact with id '{id}' not found.");
+            if (!deleted)
+            {
+                throw new NotFoundException($"Contact with id '{id}' not found.");
+            }
         }
     }
 }
